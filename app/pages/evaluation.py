@@ -26,19 +26,14 @@ def render_page():
     model_config = st.session_state['model_config']
 
    
-    # ==================== 1. 数据准备 ====================
+    # 1. 数据准备 
     st.subheader("1️⃣ 数据准备")
 
     sample_names   = df[data_config['sample_id_col']].tolist()
     indicator_cols = data_config['indicator_cols']
     X = df[indicator_cols].values.astype(float)
 
-    # if data_config['target_col']:
-    #     y_true = df[data_config['target_col']].values.astype(float)
-    #     has_target = True
-    # else:
-    #     y_true     = None
-    #     has_target = False
+  
     target_col = data_config.get('target_col')
 
     if not target_col:
